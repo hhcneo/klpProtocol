@@ -1,3 +1,5 @@
+package klp
+
 const KMessageCategory_client_to_friends-consts = 9
 const KMessageCategory_client_to_lobby-consts = 3
 const KMessageCategory_client_to_room-consts = 5
