@@ -25,7 +25,7 @@ var _ = bytes.Equal
 var _ = strings.Contains
 var _ = regexp.MatchString
 
-const KMessageCategory = 114
+
 
 func init() {
 }
