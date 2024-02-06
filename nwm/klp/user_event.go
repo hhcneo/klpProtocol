@@ -26,7 +26,7 @@ var _ = bytes.Equal
 var _ = strings.Contains
 var _ = regexp.MatchString
 
-type MessageType int64
+
 const (
   MessageType_kNtfLogin MessageType = 1
   MessageType_kNtfLogout MessageType = 2

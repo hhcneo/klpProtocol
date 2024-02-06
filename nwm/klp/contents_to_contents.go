@@ -26,7 +26,7 @@ var _ = bytes.Equal
 var _ = strings.Contains
 var _ = regexp.MatchString
 
-type MessageType int64
+
 const (
   MessageType_kForwardToObject MessageType = 1
   MessageType_kForwardToMessagingChannel MessageType = 2
