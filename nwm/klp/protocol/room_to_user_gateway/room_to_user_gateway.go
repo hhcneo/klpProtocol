@@ -13,7 +13,7 @@ import (
 	"strings"
 	"regexp"
 	"github.com/hhcneo/klpProtocol/nwm/klp/protocol"
-	"github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
+	klperror  "github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
 
 )
 
@@ -29,7 +29,7 @@ var _ = strings.Contains
 var _ = regexp.MatchString
 
 var _ = protocol.GoUnusedProtection__
-var _ = error.GoUnusedProtection__
+var _ = klperror.GoUnusedProtection__
 type MessageType int64
 const (
   MessageType_kAnsCreateRoom MessageType = 1
@@ -129,7 +129,7 @@ return int64(*p), nil
 //  - TraceID
 type AnsCreateRoom struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
   RoomLocation *protocol.RoomLocation `thrift:"room_location,5,required" db:"room_location" json:"room_location"`
@@ -145,8 +145,8 @@ func NewAnsCreateRoom() *AnsCreateRoom {
 func (p *AnsCreateRoom) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsCreateRoom_Result__DEFAULT *error.Error
-func (p *AnsCreateRoom) GetResult_() *error.Error {
+var AnsCreateRoom_Result__DEFAULT *klperror.Error
+func (p *AnsCreateRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsCreateRoom_Result__DEFAULT
   }
@@ -327,7 +327,7 @@ func (p *AnsCreateRoom)  ReadField1(ctx context.Context, iprot thrift.TProtocol)
 }
 
 func (p *AnsCreateRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -508,7 +508,7 @@ func (p *AnsCreateRoom) Validate() error {
 //  - TraceID
 type AnsJoinRoom struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
   RoomLocation *protocol.RoomLocation `thrift:"room_location,5,required" db:"room_location" json:"room_location"`
@@ -524,8 +524,8 @@ func NewAnsJoinRoom() *AnsJoinRoom {
 func (p *AnsJoinRoom) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsJoinRoom_Result__DEFAULT *error.Error
-func (p *AnsJoinRoom) GetResult_() *error.Error {
+var AnsJoinRoom_Result__DEFAULT *klperror.Error
+func (p *AnsJoinRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsJoinRoom_Result__DEFAULT
   }
@@ -706,7 +706,7 @@ func (p *AnsJoinRoom)  ReadField1(ctx context.Context, iprot thrift.TProtocol) e
 }
 
 func (p *AnsJoinRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -886,7 +886,7 @@ func (p *AnsJoinRoom) Validate() error {
 //  - TraceID
 type AnsLeaveRoom struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
   RoomLocation *protocol.RoomLocation `thrift:"room_location,5,required" db:"room_location" json:"room_location"`
@@ -901,8 +901,8 @@ func NewAnsLeaveRoom() *AnsLeaveRoom {
 func (p *AnsLeaveRoom) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsLeaveRoom_Result__DEFAULT *error.Error
-func (p *AnsLeaveRoom) GetResult_() *error.Error {
+var AnsLeaveRoom_Result__DEFAULT *klperror.Error
+func (p *AnsLeaveRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsLeaveRoom_Result__DEFAULT
   }
@@ -1064,7 +1064,7 @@ func (p *AnsLeaveRoom)  ReadField1(ctx context.Context, iprot thrift.TProtocol) 
 }
 
 func (p *AnsLeaveRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -2080,7 +2080,7 @@ func (p *NtfLogout) Validate() error {
 //  - TraceID
 type AnsAttached struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
   TraceID protocol.Buffer `thrift:"trace_id,5,required" db:"trace_id" json:"trace_id"`
@@ -2094,8 +2094,8 @@ func NewAnsAttached() *AnsAttached {
 func (p *AnsAttached) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsAttached_Result__DEFAULT *error.Error
-func (p *AnsAttached) GetResult_() *error.Error {
+var AnsAttached_Result__DEFAULT *klperror.Error
+func (p *AnsAttached) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsAttached_Result__DEFAULT
   }
@@ -2231,7 +2231,7 @@ func (p *AnsAttached)  ReadField1(ctx context.Context, iprot thrift.TProtocol) e
 }
 
 func (p *AnsAttached)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -2368,7 +2368,7 @@ func (p *AnsAttached) Validate() error {
 //  - TraceID
 type AnsDetached struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
   TraceID protocol.Buffer `thrift:"trace_id,5,required" db:"trace_id" json:"trace_id"`
@@ -2382,8 +2382,8 @@ func NewAnsDetached() *AnsDetached {
 func (p *AnsDetached) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsDetached_Result__DEFAULT *error.Error
-func (p *AnsDetached) GetResult_() *error.Error {
+var AnsDetached_Result__DEFAULT *klperror.Error
+func (p *AnsDetached) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsDetached_Result__DEFAULT
   }
@@ -2519,7 +2519,7 @@ func (p *AnsDetached)  ReadField1(ctx context.Context, iprot thrift.TProtocol) e
 }
 
 func (p *AnsDetached)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -2657,7 +2657,7 @@ func (p *AnsDetached) Validate() error {
 //  - TraceID
 type AnsUserState struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
   UserState protocol.UserState `thrift:"user_state,5,required" db:"user_state" json:"user_state"`
@@ -2672,8 +2672,8 @@ func NewAnsUserState() *AnsUserState {
 func (p *AnsUserState) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsUserState_Result__DEFAULT *error.Error
-func (p *AnsUserState) GetResult_() *error.Error {
+var AnsUserState_Result__DEFAULT *klperror.Error
+func (p *AnsUserState) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsUserState_Result__DEFAULT
   }
@@ -2828,7 +2828,7 @@ func (p *AnsUserState)  ReadField1(ctx context.Context, iprot thrift.TProtocol) 
 }
 
 func (p *AnsUserState)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -3206,7 +3206,7 @@ func (p *Pong) Validate() error {
 //  - TraceID
 type AnsCreateEmptyRoom struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   RoomLocation *protocol.RoomLocation `thrift:"room_location,4,required" db:"room_location" json:"room_location"`
   ContentsErrorCode int32 `thrift:"contents_error_code,5,required" db:"contents_error_code" json:"contents_error_code"`
@@ -3221,8 +3221,8 @@ func NewAnsCreateEmptyRoom() *AnsCreateEmptyRoom {
 func (p *AnsCreateEmptyRoom) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsCreateEmptyRoom_Result__DEFAULT *error.Error
-func (p *AnsCreateEmptyRoom) GetResult_() *error.Error {
+var AnsCreateEmptyRoom_Result__DEFAULT *klperror.Error
+func (p *AnsCreateEmptyRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsCreateEmptyRoom_Result__DEFAULT
   }
@@ -3384,7 +3384,7 @@ func (p *AnsCreateEmptyRoom)  ReadField1(ctx context.Context, iprot thrift.TProt
 }
 
 func (p *AnsCreateEmptyRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -3542,7 +3542,7 @@ func (p *AnsCreateEmptyRoom) Validate() error {
 //  - TraceID
 type AnsTnmtCreateEmptyRoom struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   RoomLocation *protocol.RoomLocation `thrift:"room_location,4,required" db:"room_location" json:"room_location"`
   ContentsErrorCode int32 `thrift:"contents_error_code,5,required" db:"contents_error_code" json:"contents_error_code"`
@@ -3557,8 +3557,8 @@ func NewAnsTnmtCreateEmptyRoom() *AnsTnmtCreateEmptyRoom {
 func (p *AnsTnmtCreateEmptyRoom) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsTnmtCreateEmptyRoom_Result__DEFAULT *error.Error
-func (p *AnsTnmtCreateEmptyRoom) GetResult_() *error.Error {
+var AnsTnmtCreateEmptyRoom_Result__DEFAULT *klperror.Error
+func (p *AnsTnmtCreateEmptyRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsTnmtCreateEmptyRoom_Result__DEFAULT
   }
@@ -3720,7 +3720,7 @@ func (p *AnsTnmtCreateEmptyRoom)  ReadField1(ctx context.Context, iprot thrift.T
 }
 
 func (p *AnsTnmtCreateEmptyRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"regexp"
 	"github.com/hhcneo/klpProtocol/nwm/klp/protocol"
-	"github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
+	klperror  "github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
 
 )
 
@@ -29,7 +29,7 @@ var _ = strings.Contains
 var _ = regexp.MatchString
 
 var _ = protocol.GoUnusedProtection__
-var _ = error.GoUnusedProtection__
+var _ = klperror.GoUnusedProtection__
 type MessageType int64
 const (
   MessageType_kAnsPmangBusinessContents MessageType = 1
@@ -91,7 +91,7 @@ return int64(*p), nil
 //  - Compressed
 type AnsPmangBusinessContents struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   URL string `thrift:"url,3,required" db:"url" json:"url"`
   BusinessContentsMessage protocol.Buffer `thrift:"business_contents_message,4,required" db:"business_contents_message" json:"business_contents_message"`
   Compressed *bool `thrift:"compressed,5" db:"compressed" json:"compressed,omitempty"`
@@ -105,8 +105,8 @@ func NewAnsPmangBusinessContents() *AnsPmangBusinessContents {
 func (p *AnsPmangBusinessContents) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsPmangBusinessContents_Result__DEFAULT *error.Error
-func (p *AnsPmangBusinessContents) GetResult_() *error.Error {
+var AnsPmangBusinessContents_Result__DEFAULT *klperror.Error
+func (p *AnsPmangBusinessContents) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsPmangBusinessContents_Result__DEFAULT
   }
@@ -244,7 +244,7 @@ func (p *AnsPmangBusinessContents)  ReadField1(ctx context.Context, iprot thrift
 }
 
 func (p *AnsPmangBusinessContents)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }

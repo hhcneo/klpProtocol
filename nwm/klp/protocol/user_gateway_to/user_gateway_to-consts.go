@@ -12,7 +12,7 @@ import (
 	"strings"
 	"regexp"
 	"github.com/hhcneo/klpProtocol/nwm/klp/protocol"
-	"github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
+	klperror  "github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
 
 )
 
@@ -28,7 +28,7 @@ var _ = strings.Contains
 var _ = regexp.MatchString
 
 var _ = protocol.GoUnusedProtection__
-var _ = error.GoUnusedProtection__
+var _ = klperror.GoUnusedProtection__
 const KMessageCategory = 111
 
 func init() {

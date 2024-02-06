@@ -13,7 +13,7 @@ import (
 	"strings"
 	"regexp"
 	"github.com/hhcneo/klpProtocol/nwm/klp/protocol"
-	"github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
+	klperror  "github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
 
 )
 
@@ -29,7 +29,7 @@ var _ = strings.Contains
 var _ = regexp.MatchString
 
 var _ = protocol.GoUnusedProtection__
-var _ = error.GoUnusedProtection__
+var _ = klperror.GoUnusedProtection__
 type MessageType int64
 const (
   MessageType_kNtfKlpGatewayLogicTo MessageType = 1
@@ -90,7 +90,7 @@ return int64(*p), nil
 //  - Command
 //  - Body
 type NtfKlpGatewayLogicTo struct {
-  Result_ *error.Error `thrift:"result,1,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,1,required" db:"result" json:"result"`
   Type protocol.Buffer `thrift:"type,2,required" db:"type" json:"type"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
@@ -104,8 +104,8 @@ func NewNtfKlpGatewayLogicTo() *NtfKlpGatewayLogicTo {
   return &NtfKlpGatewayLogicTo{}
 }
 
-var NtfKlpGatewayLogicTo_Result__DEFAULT *error.Error
-func (p *NtfKlpGatewayLogicTo) GetResult_() *error.Error {
+var NtfKlpGatewayLogicTo_Result__DEFAULT *klperror.Error
+func (p *NtfKlpGatewayLogicTo) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return NtfKlpGatewayLogicTo_Result__DEFAULT
   }
@@ -292,7 +292,7 @@ func (p *NtfKlpGatewayLogicTo) Read(ctx context.Context, iprot thrift.TProtocol)
 }
 
 func (p *NtfKlpGatewayLogicTo)  ReadField1(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }

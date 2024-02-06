@@ -13,7 +13,7 @@ import (
 	"strings"
 	"regexp"
 	"github.com/hhcneo/klpProtocol/nwm/klp/protocol"
-	"github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
+	klperror  "github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
 
 )
 
@@ -29,7 +29,7 @@ var _ = strings.Contains
 var _ = regexp.MatchString
 
 var _ = protocol.GoUnusedProtection__
-var _ = error.GoUnusedProtection__
+var _ = klperror.GoUnusedProtection__
 type MessageType int64
 const (
   MessageType_kAnsUserLocations MessageType = 1
@@ -467,7 +467,7 @@ func (p *AnsFriendLocations) Validate() error {
 //  - Result_
 type AnsUpdateFriends struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
 }
 
 func NewAnsUpdateFriends() *AnsUpdateFriends {
@@ -478,8 +478,8 @@ func NewAnsUpdateFriends() *AnsUpdateFriends {
 func (p *AnsUpdateFriends) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsUpdateFriends_Result__DEFAULT *error.Error
-func (p *AnsUpdateFriends) GetResult_() *error.Error {
+var AnsUpdateFriends_Result__DEFAULT *klperror.Error
+func (p *AnsUpdateFriends) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsUpdateFriends_Result__DEFAULT
   }
@@ -558,7 +558,7 @@ func (p *AnsUpdateFriends)  ReadField1(ctx context.Context, iprot thrift.TProtoc
 }
 
 func (p *AnsUpdateFriends)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -626,7 +626,7 @@ func (p *AnsUpdateFriends) Validate() error {
 //  - Result_
 type AnsAddFriends struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
 }
 
 func NewAnsAddFriends() *AnsAddFriends {
@@ -637,8 +637,8 @@ func NewAnsAddFriends() *AnsAddFriends {
 func (p *AnsAddFriends) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsAddFriends_Result__DEFAULT *error.Error
-func (p *AnsAddFriends) GetResult_() *error.Error {
+var AnsAddFriends_Result__DEFAULT *klperror.Error
+func (p *AnsAddFriends) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsAddFriends_Result__DEFAULT
   }
@@ -717,7 +717,7 @@ func (p *AnsAddFriends)  ReadField1(ctx context.Context, iprot thrift.TProtocol)
 }
 
 func (p *AnsAddFriends)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -785,7 +785,7 @@ func (p *AnsAddFriends) Validate() error {
 //  - Result_
 type AnsRemoveFriends struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
 }
 
 func NewAnsRemoveFriends() *AnsRemoveFriends {
@@ -796,8 +796,8 @@ func NewAnsRemoveFriends() *AnsRemoveFriends {
 func (p *AnsRemoveFriends) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsRemoveFriends_Result__DEFAULT *error.Error
-func (p *AnsRemoveFriends) GetResult_() *error.Error {
+var AnsRemoveFriends_Result__DEFAULT *klperror.Error
+func (p *AnsRemoveFriends) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsRemoveFriends_Result__DEFAULT
   }
@@ -876,7 +876,7 @@ func (p *AnsRemoveFriends)  ReadField1(ctx context.Context, iprot thrift.TProtoc
 }
 
 func (p *AnsRemoveFriends)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }

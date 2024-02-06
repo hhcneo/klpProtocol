@@ -13,7 +13,7 @@ import (
 	"strings"
 	"regexp"
 	"github.com/hhcneo/klpProtocol/nwm/klp/protocol"
-	"github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
+	klperror  "github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
 
 )
 
@@ -29,7 +29,7 @@ var _ = strings.Contains
 var _ = regexp.MatchString
 
 var _ = protocol.GoUnusedProtection__
-var _ = error.GoUnusedProtection__
+var _ = klperror.GoUnusedProtection__
 type MessageType int64
 const (
   MessageType_kAnsUserState MessageType = 1
@@ -93,7 +93,7 @@ return int64(*p), nil
 //  - TraceID
 type AnsUserState struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
   UserState protocol.UserState `thrift:"user_state,5,required" db:"user_state" json:"user_state"`
@@ -109,8 +109,8 @@ func NewAnsUserState() *AnsUserState {
 func (p *AnsUserState) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsUserState_Result__DEFAULT *error.Error
-func (p *AnsUserState) GetResult_() *error.Error {
+var AnsUserState_Result__DEFAULT *klperror.Error
+func (p *AnsUserState) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsUserState_Result__DEFAULT
   }
@@ -284,7 +284,7 @@ func (p *AnsUserState)  ReadField1(ctx context.Context, iprot thrift.TProtocol) 
 }
 
 func (p *AnsUserState)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -464,7 +464,7 @@ func (p *AnsUserState) Validate() error {
 //  - Gsn
 type AnsDisconnectUser struct {
   RequestKey protocol.RequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   Gsn protocol.Gsn `thrift:"gsn,4,required" db:"gsn" json:"gsn"`
 }
@@ -477,8 +477,8 @@ func NewAnsDisconnectUser() *AnsDisconnectUser {
 func (p *AnsDisconnectUser) GetRequestKey() protocol.RequestKey {
   return p.RequestKey
 }
-var AnsDisconnectUser_Result__DEFAULT *error.Error
-func (p *AnsDisconnectUser) GetResult_() *error.Error {
+var AnsDisconnectUser_Result__DEFAULT *klperror.Error
+func (p *AnsDisconnectUser) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsDisconnectUser_Result__DEFAULT
   }
@@ -595,7 +595,7 @@ func (p *AnsDisconnectUser)  ReadField1(ctx context.Context, iprot thrift.TProto
 }
 
 func (p *AnsDisconnectUser)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }

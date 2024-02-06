@@ -13,7 +13,7 @@ import (
 	"strings"
 	"regexp"
 	"github.com/hhcneo/klpProtocol/nwm/klp/protocol"
-	"github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
+	klperror  "github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
 
 )
 
@@ -29,7 +29,7 @@ var _ = strings.Contains
 var _ = regexp.MatchString
 
 var _ = protocol.GoUnusedProtection__
-var _ = error.GoUnusedProtection__
+var _ = klperror.GoUnusedProtection__
 type MessageType int64
 const (
   MessageType_kAnsVersion MessageType = 1
@@ -153,7 +153,7 @@ return int64(*p), nil
 //  - ContentsServer
 type AnsVersion struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Ssn protocol.Ssn `thrift:"ssn,3,required" db:"ssn" json:"ssn"`
   KlpProtocol int32 `thrift:"klp_protocol,4,required" db:"klp_protocol" json:"klp_protocol"`
   KlpServer int32 `thrift:"klp_server,5,required" db:"klp_server" json:"klp_server"`
@@ -169,8 +169,8 @@ func NewAnsVersion() *AnsVersion {
 func (p *AnsVersion) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsVersion_Result__DEFAULT *error.Error
-func (p *AnsVersion) GetResult_() *error.Error {
+var AnsVersion_Result__DEFAULT *klperror.Error
+func (p *AnsVersion) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsVersion_Result__DEFAULT
   }
@@ -344,7 +344,7 @@ func (p *AnsVersion)  ReadField1(ctx context.Context, iprot thrift.TProtocol) er
 }
 
 func (p *AnsVersion)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -522,7 +522,7 @@ func (p *AnsVersion) Validate() error {
 //  - ContentsResult_
 type AnsLogin struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Gsn protocol.Gsn `thrift:"gsn,3,required" db:"gsn" json:"gsn"`
   IP string `thrift:"ip,4,required" db:"ip" json:"ip"`
   Port int32 `thrift:"port,5,required" db:"port" json:"port"`
@@ -537,8 +537,8 @@ func NewAnsLogin() *AnsLogin {
 func (p *AnsLogin) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsLogin_Result__DEFAULT *error.Error
-func (p *AnsLogin) GetResult_() *error.Error {
+var AnsLogin_Result__DEFAULT *klperror.Error
+func (p *AnsLogin) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsLogin_Result__DEFAULT
   }
@@ -693,7 +693,7 @@ func (p *AnsLogin)  ReadField1(ctx context.Context, iprot thrift.TProtocol) erro
 }
 
 func (p *AnsLogin)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -846,7 +846,7 @@ func (p *AnsLogin) Validate() error {
 //  - Result_
 type AnsLogout struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
 }
 
 func NewAnsLogout() *AnsLogout {
@@ -857,8 +857,8 @@ func NewAnsLogout() *AnsLogout {
 func (p *AnsLogout) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsLogout_Result__DEFAULT *error.Error
-func (p *AnsLogout) GetResult_() *error.Error {
+var AnsLogout_Result__DEFAULT *klperror.Error
+func (p *AnsLogout) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsLogout_Result__DEFAULT
   }
@@ -937,7 +937,7 @@ func (p *AnsLogout)  ReadField1(ctx context.Context, iprot thrift.TProtocol) err
 }
 
 func (p *AnsLogout)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -1005,7 +1005,7 @@ func (p *AnsLogout) Validate() error {
 //  - ServerType
 //  - EnvelopedMessage
 type ErrorForwardMessage struct {
-  Result_ *error.Error `thrift:"result,1,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,1,required" db:"result" json:"result"`
   ServerType protocol.ServerType `thrift:"server_type,2,required" db:"server_type" json:"server_type"`
   EnvelopedMessage protocol.KlpProtocolBuffer `thrift:"enveloped_message,3,required" db:"enveloped_message" json:"enveloped_message"`
 }
@@ -1014,8 +1014,8 @@ func NewErrorForwardMessage() *ErrorForwardMessage {
   return &ErrorForwardMessage{}
 }
 
-var ErrorForwardMessage_Result__DEFAULT *error.Error
-func (p *ErrorForwardMessage) GetResult_() *error.Error {
+var ErrorForwardMessage_Result__DEFAULT *klperror.Error
+func (p *ErrorForwardMessage) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return ErrorForwardMessage_Result__DEFAULT
   }
@@ -1107,7 +1107,7 @@ func (p *ErrorForwardMessage) Read(ctx context.Context, iprot thrift.TProtocol) 
 }
 
 func (p *ErrorForwardMessage)  ReadField1(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -1362,7 +1362,7 @@ func (p *Ping) Validate() error {
 //  - ContentsErrorCode
 type AnsCreateAndJoinRoom struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   CategoryID protocol.CategoryId `thrift:"category_id,3,required" db:"category_id" json:"category_id"`
   RoomID protocol.RoomId `thrift:"room_id,4,required" db:"room_id" json:"room_id"`
   ContentsErrorCode *int32 `thrift:"contents_error_code,5" db:"contents_error_code" json:"contents_error_code,omitempty"`
@@ -1376,8 +1376,8 @@ func NewAnsCreateAndJoinRoom() *AnsCreateAndJoinRoom {
 func (p *AnsCreateAndJoinRoom) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsCreateAndJoinRoom_Result__DEFAULT *error.Error
-func (p *AnsCreateAndJoinRoom) GetResult_() *error.Error {
+var AnsCreateAndJoinRoom_Result__DEFAULT *klperror.Error
+func (p *AnsCreateAndJoinRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsCreateAndJoinRoom_Result__DEFAULT
   }
@@ -1515,7 +1515,7 @@ func (p *AnsCreateAndJoinRoom)  ReadField1(ctx context.Context, iprot thrift.TPr
 }
 
 func (p *AnsCreateAndJoinRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -1658,7 +1658,7 @@ func (p *AnsCreateAndJoinRoom) Validate() error {
 //  - ContentsErrorCode
 type AnsJoinRoom struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   CategoryID protocol.CategoryId `thrift:"category_id,3,required" db:"category_id" json:"category_id"`
   RoomID protocol.RoomId `thrift:"room_id,4,required" db:"room_id" json:"room_id"`
   ContentsErrorCode *int32 `thrift:"contents_error_code,5" db:"contents_error_code" json:"contents_error_code,omitempty"`
@@ -1672,8 +1672,8 @@ func NewAnsJoinRoom() *AnsJoinRoom {
 func (p *AnsJoinRoom) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsJoinRoom_Result__DEFAULT *error.Error
-func (p *AnsJoinRoom) GetResult_() *error.Error {
+var AnsJoinRoom_Result__DEFAULT *klperror.Error
+func (p *AnsJoinRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsJoinRoom_Result__DEFAULT
   }
@@ -1811,7 +1811,7 @@ func (p *AnsJoinRoom)  ReadField1(ctx context.Context, iprot thrift.TProtocol) e
 }
 
 func (p *AnsJoinRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -1954,7 +1954,7 @@ func (p *AnsJoinRoom) Validate() error {
 //  - ContentsErrorCode
 type AnsRandomJoinRoomWithServerOption struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   CategoryID protocol.CategoryId `thrift:"category_id,3,required" db:"category_id" json:"category_id"`
   RoomID protocol.RoomId `thrift:"room_id,4,required" db:"room_id" json:"room_id"`
   ContentsErrorCode *int32 `thrift:"contents_error_code,5" db:"contents_error_code" json:"contents_error_code,omitempty"`
@@ -1968,8 +1968,8 @@ func NewAnsRandomJoinRoomWithServerOption() *AnsRandomJoinRoomWithServerOption {
 func (p *AnsRandomJoinRoomWithServerOption) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsRandomJoinRoomWithServerOption_Result__DEFAULT *error.Error
-func (p *AnsRandomJoinRoomWithServerOption) GetResult_() *error.Error {
+var AnsRandomJoinRoomWithServerOption_Result__DEFAULT *klperror.Error
+func (p *AnsRandomJoinRoomWithServerOption) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsRandomJoinRoomWithServerOption_Result__DEFAULT
   }
@@ -2107,7 +2107,7 @@ func (p *AnsRandomJoinRoomWithServerOption)  ReadField1(ctx context.Context, ipr
 }
 
 func (p *AnsRandomJoinRoomWithServerOption)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -2250,7 +2250,7 @@ func (p *AnsRandomJoinRoomWithServerOption) Validate() error {
 //  - ContentsErrorCode
 type AnsRandomJoinRoom struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   CategoryID protocol.CategoryId `thrift:"category_id,3,required" db:"category_id" json:"category_id"`
   RoomID protocol.RoomId `thrift:"room_id,4,required" db:"room_id" json:"room_id"`
   ContentsErrorCode *int32 `thrift:"contents_error_code,5" db:"contents_error_code" json:"contents_error_code,omitempty"`
@@ -2264,8 +2264,8 @@ func NewAnsRandomJoinRoom() *AnsRandomJoinRoom {
 func (p *AnsRandomJoinRoom) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsRandomJoinRoom_Result__DEFAULT *error.Error
-func (p *AnsRandomJoinRoom) GetResult_() *error.Error {
+var AnsRandomJoinRoom_Result__DEFAULT *klperror.Error
+func (p *AnsRandomJoinRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsRandomJoinRoom_Result__DEFAULT
   }
@@ -2403,7 +2403,7 @@ func (p *AnsRandomJoinRoom)  ReadField1(ctx context.Context, iprot thrift.TProto
 }
 
 func (p *AnsRandomJoinRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -2543,7 +2543,7 @@ func (p *AnsRandomJoinRoom) Validate() error {
 //  - Result_
 type AnsLeaveRoom struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
 }
 
 func NewAnsLeaveRoom() *AnsLeaveRoom {
@@ -2554,8 +2554,8 @@ func NewAnsLeaveRoom() *AnsLeaveRoom {
 func (p *AnsLeaveRoom) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsLeaveRoom_Result__DEFAULT *error.Error
-func (p *AnsLeaveRoom) GetResult_() *error.Error {
+var AnsLeaveRoom_Result__DEFAULT *klperror.Error
+func (p *AnsLeaveRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsLeaveRoom_Result__DEFAULT
   }
@@ -2634,7 +2634,7 @@ func (p *AnsLeaveRoom)  ReadField1(ctx context.Context, iprot thrift.TProtocol) 
 }
 
 func (p *AnsLeaveRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -3647,7 +3647,7 @@ func (p *Pong) Validate() error {
 //  - RoomList
 type AnsRoomList struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   RoomList []*protocol.RoomListInfo `thrift:"room_list,3,required" db:"room_list" json:"room_list"`
 }
 
@@ -3659,8 +3659,8 @@ func NewAnsRoomList() *AnsRoomList {
 func (p *AnsRoomList) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsRoomList_Result__DEFAULT *error.Error
-func (p *AnsRoomList) GetResult_() *error.Error {
+var AnsRoomList_Result__DEFAULT *klperror.Error
+func (p *AnsRoomList) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsRoomList_Result__DEFAULT
   }
@@ -3758,7 +3758,7 @@ func (p *AnsRoomList)  ReadField1(ctx context.Context, iprot thrift.TProtocol) e
 }
 
 func (p *AnsRoomList)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -3872,7 +3872,7 @@ func (p *AnsRoomList) Validate() error {
 //  - UserCount
 type AnsChangeLobby struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   UserCount int32 `thrift:"user_count,3,required" db:"user_count" json:"user_count"`
 }
 
@@ -3884,8 +3884,8 @@ func NewAnsChangeLobby() *AnsChangeLobby {
 func (p *AnsChangeLobby) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsChangeLobby_Result__DEFAULT *error.Error
-func (p *AnsChangeLobby) GetResult_() *error.Error {
+var AnsChangeLobby_Result__DEFAULT *klperror.Error
+func (p *AnsChangeLobby) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsChangeLobby_Result__DEFAULT
   }
@@ -3983,7 +3983,7 @@ func (p *AnsChangeLobby)  ReadField1(ctx context.Context, iprot thrift.TProtocol
 }
 
 func (p *AnsChangeLobby)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -4077,7 +4077,7 @@ func (p *AnsChangeLobby) Validate() error {
 //  - ContentsErrorCode
 type AnsJoinTnmt struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   CategoryID protocol.CategoryId `thrift:"category_id,3,required" db:"category_id" json:"category_id"`
   TnmtSrl protocol.TnmtSrl `thrift:"tnmt_srl,4,required" db:"tnmt_srl" json:"tnmt_srl"`
   State protocol.TnmtUserState `thrift:"state,5,required" db:"state" json:"state"`
@@ -4093,8 +4093,8 @@ func NewAnsJoinTnmt() *AnsJoinTnmt {
 func (p *AnsJoinTnmt) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsJoinTnmt_Result__DEFAULT *error.Error
-func (p *AnsJoinTnmt) GetResult_() *error.Error {
+var AnsJoinTnmt_Result__DEFAULT *klperror.Error
+func (p *AnsJoinTnmt) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsJoinTnmt_Result__DEFAULT
   }
@@ -4268,7 +4268,7 @@ func (p *AnsJoinTnmt)  ReadField1(ctx context.Context, iprot thrift.TProtocol) e
 }
 
 func (p *AnsJoinTnmt)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -4447,7 +4447,7 @@ func (p *AnsJoinTnmt) Validate() error {
 //  - ContentsData
 type AnsLeaveTnmt struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   State protocol.TnmtUserState `thrift:"state,3,required" db:"state" json:"state"`
   ContentsData protocol.Buffer `thrift:"contents_data,4,required" db:"contents_data" json:"contents_data"`
 }
@@ -4460,8 +4460,8 @@ func NewAnsLeaveTnmt() *AnsLeaveTnmt {
 func (p *AnsLeaveTnmt) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsLeaveTnmt_Result__DEFAULT *error.Error
-func (p *AnsLeaveTnmt) GetResult_() *error.Error {
+var AnsLeaveTnmt_Result__DEFAULT *klperror.Error
+func (p *AnsLeaveTnmt) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsLeaveTnmt_Result__DEFAULT
   }
@@ -4578,7 +4578,7 @@ func (p *AnsLeaveTnmt)  ReadField1(ctx context.Context, iprot thrift.TProtocol) 
 }
 
 func (p *AnsLeaveTnmt)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }

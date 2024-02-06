@@ -13,7 +13,7 @@ import (
 	"strings"
 	"regexp"
 	"github.com/hhcneo/klpProtocol/nwm/klp/protocol"
-	"github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
+	klperror  "github.com/hhcneo/klpProtocol/nwm/klp/protocol/error"
 
 )
 
@@ -29,7 +29,7 @@ var _ = strings.Contains
 var _ = regexp.MatchString
 
 var _ = protocol.GoUnusedProtection__
-var _ = error.GoUnusedProtection__
+var _ = klperror.GoUnusedProtection__
 type MessageType int64
 const (
   MessageType_kAnsCategoryList MessageType = 1
@@ -331,7 +331,7 @@ func (p *CategoryInfo) Validate() error {
 //  - Categories
 type AnsCategoryList struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   Categories []*CategoryInfo `thrift:"categories,3,required" db:"categories" json:"categories"`
 }
 
@@ -343,8 +343,8 @@ func NewAnsCategoryList() *AnsCategoryList {
 func (p *AnsCategoryList) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsCategoryList_Result__DEFAULT *error.Error
-func (p *AnsCategoryList) GetResult_() *error.Error {
+var AnsCategoryList_Result__DEFAULT *klperror.Error
+func (p *AnsCategoryList) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsCategoryList_Result__DEFAULT
   }
@@ -442,7 +442,7 @@ func (p *AnsCategoryList)  ReadField1(ctx context.Context, iprot thrift.TProtoco
 }
 
 func (p *AnsCategoryList)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -556,7 +556,7 @@ func (p *AnsCategoryList) Validate() error {
 //  - RoomInfos
 type AnsSearchRoom struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   RoomInfos []*protocol.RoomInfo `thrift:"room_infos,3,required" db:"room_infos" json:"room_infos"`
 }
 
@@ -568,8 +568,8 @@ func NewAnsSearchRoom() *AnsSearchRoom {
 func (p *AnsSearchRoom) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsSearchRoom_Result__DEFAULT *error.Error
-func (p *AnsSearchRoom) GetResult_() *error.Error {
+var AnsSearchRoom_Result__DEFAULT *klperror.Error
+func (p *AnsSearchRoom) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsSearchRoom_Result__DEFAULT
   }
@@ -667,7 +667,7 @@ func (p *AnsSearchRoom)  ReadField1(ctx context.Context, iprot thrift.TProtocol)
 }
 
 func (p *AnsSearchRoom)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
@@ -781,7 +781,7 @@ func (p *AnsSearchRoom) Validate() error {
 //  - RoomInfos
 type AnsRoomInfoList struct {
   RequestKey protocol.ClientRequestKey `thrift:"request_key,1,required" db:"request_key" json:"request_key"`
-  Result_ *error.Error `thrift:"result,2,required" db:"result" json:"result"`
+  Result_ *klperror.Error `thrift:"result,2,required" db:"result" json:"result"`
   RoomInfos []*protocol.RoomInfo `thrift:"room_infos,3,required" db:"room_infos" json:"room_infos"`
 }
 
@@ -793,8 +793,8 @@ func NewAnsRoomInfoList() *AnsRoomInfoList {
 func (p *AnsRoomInfoList) GetRequestKey() protocol.ClientRequestKey {
   return p.RequestKey
 }
-var AnsRoomInfoList_Result__DEFAULT *error.Error
-func (p *AnsRoomInfoList) GetResult_() *error.Error {
+var AnsRoomInfoList_Result__DEFAULT *klperror.Error
+func (p *AnsRoomInfoList) GetResult_() *klperror.Error {
   if !p.IsSetResult_() {
     return AnsRoomInfoList_Result__DEFAULT
   }
@@ -892,7 +892,7 @@ func (p *AnsRoomInfoList)  ReadField1(ctx context.Context, iprot thrift.TProtoco
 }
 
 func (p *AnsRoomInfoList)  ReadField2(ctx context.Context, iprot thrift.TProtocol) error {
-  p.Result_ = &error.Error{}
+  p.Result_ = &klperror.Error{}
   if err := p.Result_.Read(ctx, iprot); err != nil {
     return thrift.PrependError(fmt.Sprintf("%T error reading struct: ", p.Result_), err)
   }
