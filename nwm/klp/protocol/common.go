@@ -100,7 +100,6 @@ const (
   RemoveUserReason_kUserDefined_7 RemoveUserReason = 1007
   RemoveUserReason_kUserDefined_8 RemoveUserReason = 1008
   RemoveUserReason_kUserDefined_9 RemoveUserReason = 1009
-  RemoveUserReason_kUserDefinedMax RemoveUserReason = 1009
 )
 
 func (p RemoveUserReason) String() string {
